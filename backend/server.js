@@ -7,7 +7,11 @@ dbconfig();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: "https://rose-pvng.vercel.app", 
+  credentials: true
+}));
+
 app.use("/api/auth", authRoutes);
 
 
