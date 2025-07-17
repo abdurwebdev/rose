@@ -16,14 +16,13 @@ const Login = () => {
     try {
       const res = await axios.post("https://rose-6tyh.vercel.app/api/auth/login", formData);
       setMessage(res.data.message);
-      if (res.data.token) {
+      if (res.data.message === "Login successful") {
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("username", res.data.user.username);
         navigate("/home");
       }
     } catch (err) {
-      if (err.response?.data?.message) {
-        setMessage(err.response.data.message);
+      if (err.response && err.response.data) {
+        setMessage(err.response.data.error || err.response.data.message);
       } else {
         setMessage("An error occurred.");
       }
@@ -38,7 +37,6 @@ const Login = () => {
           type="text"
           name="username"
           placeholder="Username"
-          autoComplete="username"
           value={formData.username}
           onChange={handleChange}
         />
@@ -47,16 +45,13 @@ const Login = () => {
           className="border border-gray-300 rounded-md p-2"
           name="password"
           placeholder="Password"
-          autoComplete="current-password"
           value={formData.password}
           onChange={handleChange}
         />
-        <button type="submit" className="bg-blue-500 text-white rounded-md p-2">
-          Login
-        </button>
+        <button type="submit" className="bg-blue-500 text-white rounded-md p-2">Logisdasdasdn</button>
       </form>
       <a href="/register" className="mt-4 text-blue-500 underline">Register</a>
-      <p className="text-red-500">{message}sssssss</p>
+      <p className="text-red-500">{message}</p>
     </div>
   );
 };
