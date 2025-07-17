@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 router.post("/register", async (req, res) => {
     const { username, password } = req.body;
-    console.log("Registering user:", username);
+    console.log("Incoming register request");
     try {
         const existingUser = await User.findOne({ username });
         if (existingUser) {
@@ -13,7 +13,8 @@ router.post("/register", async (req, res) => {
         const user = await User.create({ username, password });
         res.status(201).json({ message: "User created successfully", user });
     } catch (error) {
-        res.status(500).json({ message: "User creation failed", error: error.message });
+      console.error("Register Error:", error.message);
+      res.status(500).json({ error: "Something went wrong." });
     }
 })
 
