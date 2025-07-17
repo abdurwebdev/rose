@@ -51,6 +51,31 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Videos Section */}
+<section id="videos" className="py-24 bg-gray-50 px-6">
+  <div className="max-w-7xl mx-auto">
+    <h3 className="text-3xl font-bold text-gray-800 mb-12 text-center">Latest Videos</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+      {Array.from({ length: 36 }).map((_, index) => (
+        <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all">
+          <div className="w-full h-48 bg-gray-200">
+            <img
+              src={`https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg`}
+              alt="video thumbnail"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="p-4">
+            <h4 className="font-semibold text-gray-800 text-md mb-2">
+              Video Title {index + 1}
+            </h4>
+            <p className="text-sm text-gray-500">Channel Name · 12K views · 2 days ago</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Footer */}
       <footer className="bg-blue-900 text-white py-8 mt-16">
