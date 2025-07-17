@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,6 +16,9 @@ const Login = () => {
     try {
       const res = await axios.post("https://rose-6tyh.vercel.app/api/auth/login", formData);
       setMessage(res.data.message);
+      if (res.data.message === "Login successful") {
+        setTimeout(() => navigate("/home"), 1000);
+      }
     } catch (err) {
       if (err.response && err.response.data) {
         setMessage(err.response.data.error || err.response.data.message);
