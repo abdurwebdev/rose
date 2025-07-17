@@ -25,9 +25,10 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input 
+          className="border border-gray-300 rounded-md p-2"
           type="text" 
           name="username" 
           placeholder="Username"
@@ -35,15 +36,16 @@ const Register = () => {
           onChange={handleChange}
         />
         <input 
-          type="password" 
+          type="password"
+          className="border border-gray-300 rounded-md p-2"
           name="password" 
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
         />
-        <button type="submit">Register</button>
+        <button type="submit" className="bg-blue-500 text-white rounded-md p-2">Register</button>
       </form>
-      <p>{message}</p>
+      <p className="text-red-500">{message}</p>
     </div>
   );
 };
