@@ -46,7 +46,7 @@ const Register = () => {
         <button type="submit" className="bg-blue-500 text-white rounded-md p-2">Register</button>
       </form>
       <p className="text-red-500">{message}</p>
-      <a href="/login" className="mt-4 text-blue-500 underline">Login</a>
+      <a href="/" className="mt-4 text-blue-500 underline">Login</a>
     </div>
   );
 };

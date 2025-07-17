@@ -11,13 +11,18 @@ router.post("/register", async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
-    const user = await User.create({ username, password });
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const user = await User.create({ username, password: hashedPassword });
     res.status(201).json({ message: "User created successfully", user });
   } catch (error) {
     console.error("Register Error:", error.message);
     res.status(500).json({ error: "Something went wrong." });
   }
-})
+});
+
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
