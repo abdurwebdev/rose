@@ -9,6 +9,11 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const handleLogout = () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      window.location.href = "/";
+    };
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (!storedUser) return navigate('/');
     setUser(storedUser);
@@ -30,6 +35,8 @@ const Home = () => {
             <li><a href="#videos" className="hover:text-blue-600">Videos</a></li>
             <li><a href="#contact" className="hover:text-blue-600">Contact</a></li>
           </ul>
+          <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded">Logout</button>
+    
         </div>
       </nav>
 

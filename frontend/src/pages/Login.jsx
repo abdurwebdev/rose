@@ -16,14 +16,14 @@ const Login = () => {
     try {
       const res = await axios.post("https://rose-6tyh.vercel.app/api/auth/login", formData);
       setMessage(res.data.message);
-      if (res.data.message === "Login successful") {
-        localStorage.setItem("isAuthenticated", "true"); // Save login flag
-        setTimeout(() => navigate("/home"), 1000);
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.user.username);
+        navigate("/home");
       }
-      
     } catch (err) {
-      if (err.response && err.response.data) {
-        setMessage(err.response.data.error || err.response.data.message);
+      if (err.response?.data?.message) {
+        setMessage(err.response.data.message);
       } else {
         setMessage("An error occurred.");
       }
@@ -56,7 +56,7 @@ const Login = () => {
         </button>
       </form>
       <a href="/register" className="mt-4 text-blue-500 underline">Register</a>
-      <p className="text-red-500">{message}</p>
+      <p className="text-red-500">{message}sssssss</p>
     </div>
   );
 };
