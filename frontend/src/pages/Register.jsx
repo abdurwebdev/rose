@@ -35,14 +35,16 @@ const Register = () => {
           value={formData.username}
           onChange={handleChange}
         />
-        <input 
-          type="password"
-          className="border border-gray-300 rounded-md p-2"
-          name="password" 
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-        />
+       <input 
+  type="password"
+  className="border border-gray-300 rounded-md p-2"
+  name="password" 
+  placeholder="Password"
+  value={formData.password}
+  onChange={handleChange}
+  autoComplete="current-password"
+/>
+
         <button type="submit" className="bg-blue-500 text-white rounded-md p-2">Register</button>
       </form>
       <p className="text-red-500">{message}</p>
