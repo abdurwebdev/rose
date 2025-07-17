@@ -13,7 +13,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/register", formData);
+      const res = await axios.post("https://rose-6tyh.vercel.app/api/auth/register", formData);
       setMessage(res.data.message);
     } catch (err) {
       if (err.response && err.response.data) {
